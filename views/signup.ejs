@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign UP</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Sign Up</h1>
+        <div>
+            <form method="POST" action="/user/signup">
+                <label>Full Name</label>
+                <input name="name" type="text" required/>
+                <label>Email</label>
+                <input name="email" type="text" required/>
+                <label>Password</label>
+                <input name="password" type="text" required>
+                <button type="submit">SignUp</button>
+            </form>
+        </div>
+    </body>
+</html>
