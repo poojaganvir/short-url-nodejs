@@ -2,7 +2,7 @@ const express = require("express");
 const connectDB = require("./connection");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const { restrictToLoggedInUserOnly, checkAuth } = require("./middleware/auth");
+const { checkForAuthentication, restrictTo } = require("./middleware/auth");
 
 //static route to render home page
 const staticRouter = require("./routes/staticRouter");
@@ -22,10 +22,11 @@ app.set("views", path.resolve("./views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(checkForAuthentication);
 
-app.use("/url", restrictToLoggedInUserOnly, urlRouter);
+app.use("/url", restrictTo(["NORMAL", "ADMIN"]), urlRouter);
 app.use("/user", userRouter);
-app.use("/", checkAuth, staticRouter);
+app.use("/", staticRouter);
 
 app.use(express.json());
 

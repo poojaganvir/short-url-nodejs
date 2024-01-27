@@ -23,7 +23,7 @@ const handleUserLogin = async(req, res) => {
     }
     // const sessionId = uuidv4();
     const token = setUser(user);
-    res.cookie("uid", token);
+    res.cookie("token", token);
     return res.redirect("/");
 };
 
